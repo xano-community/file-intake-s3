@@ -10,8 +10,6 @@ Files arrive in a bucket and then what? Someone eyeballs them, moves the good on
 
 This template makes the intake a governed workflow instead of a convention. Every file moves through an explicit state machine — `registered → validated → needs_review → approved → processed` (with `failed` and `rejected` branches) — and illegal transitions are refused server-side, not left to the UI. Validation runs at the gate (allowed type, size ceiling, and an optional real S3 object-existence check). Every transition appends an immutable event, every review is recorded, and every API call is logged on success and failure. Xano owns the workflow and the audit; S3 keeps holding the bytes.
 
-## Repo layout
-
 ## How it works
 
 A file is a row in `files` carrying a `status` and joined to its S3 object by a unique `s3_key`. The lifecycle is a guarded state machine — the transition guard (`s3_file_intake_check_transition`) is a pure function, so the rules hold no matter which endpoint is called:
