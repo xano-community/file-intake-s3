@@ -38,7 +38,7 @@ Every transition appends a `file_events` row, so a file's history is always reco
 
 ## API surface
 
-All endpoints live in the `S3FileIntake` API group (canonical `s3-file-intake`) and require the API secret when `API_AUTH_SECRET` is set (header `X-API-Secret: <secret>` or an `api_secret` field). Every call writes an `api_request_logs` row.
+All endpoints live in the `S3FileIntake` API group (Xano assigns its `api:<canonical>` slug per install) and require the API secret when `API_AUTH_SECRET` is set (header `X-API-Secret: <secret>` or an `api_secret` field). Every call writes an `api_request_logs` row.
 
 | Method | Path | Purpose |
 |---|---|---|
